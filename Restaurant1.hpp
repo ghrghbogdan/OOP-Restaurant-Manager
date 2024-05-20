@@ -761,12 +761,12 @@ public:
         Mese *p = start;
         while (p != nullptr)
         {
-            if (masa != -1 and p->NumarLocuri >= nrclienti and p->Ocupata == false and nrlocuri > p->NumarLocuri)
+            if (masa != -1 && p->NumarLocuri >= nrclienti && p->Ocupata == false && nrlocuri > p->NumarLocuri)
             {
                 masa = p->NumarMasa;
                 nrlocuri = p->NumarLocuri;
             }
-            else if (masa == -1 and p->NumarLocuri >= nrclienti and p->Ocupata == false)
+            else if (masa == -1 && p->NumarLocuri >= nrclienti && p->Ocupata == false)
             {
                 masa = p->NumarMasa;
                 nrlocuri = p->NumarLocuri;
@@ -858,7 +858,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->NumarMasa == NumarMasa and p->IdClient == IdClient)
+            if (p->NumarMasa == NumarMasa && p->IdClient == IdClient)
             {
                 p->NotaIndividuala += nota;
                 break;
@@ -875,7 +875,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id and p->NumarMasa == masa)
+            if (p->IdClient == id && p->NumarMasa == masa)
             {
                 int nota = p->NotaIndividuala;
                 return nota;
@@ -920,7 +920,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id and p->NumarMasa == masa)
+            if (p->IdClient == id && p->NumarMasa == masa)
             {
                 p->NotaIndividuala = 0;
             }
@@ -932,7 +932,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id and p->NumarMasa == masa)
+            if (p->IdClient == id && p->NumarMasa == masa)
             {
                 return;
             }

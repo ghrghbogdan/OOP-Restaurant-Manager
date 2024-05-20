@@ -367,7 +367,7 @@ bool Interactions(Meniu *meniu[], Mese *masa, Clienti *clienti)
         for (int i = 0; i < 18; i++)
         {
             meniu[i]->printMeniu();
-            if (i == 2 or i == 6 or i == 9 or i == 15)
+            if (i == 2 || i == 6 || i == 9 || i == 15)
                 cout << endl;
         }
         cout << endl;
