@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Restaurant1.hpp"
 using namespace std;
+
 ostream &operator<<(ostream &COUT, Clienti *clienti)
 {
     clienti->printClientiNota();
@@ -44,6 +45,7 @@ Clienti *AdaugaClienti(Mese *&masa, Clienti *&clienti)
     }
     else
     {
+
         cout << endl;
         cout << "--------------------------------" << endl;
         cout << "Masa " << validMasa << " a fost ocupata cu succes!" << endl;
@@ -105,7 +107,6 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
             cin.getline(ciorbaInput, 98);
             bool valid = false;
             int order = 0;
-
             for (int i = 0; i < 3; i++)
             {
                 order = i;
@@ -117,6 +118,7 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
 
             if (valid)
             {
+                handleOrder(meniu[order]);
 
                 int price = meniu[order]->getPrice();
 
@@ -176,6 +178,8 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
 
             if (valid)
             {
+                handleOrder(meniu[order]);
+
                 int cantitate = meniu[order]->getCantitate();
                 if (cantitate == 0)
                 {
@@ -222,6 +226,7 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
 
                 if (valid)
                 {
+                    handleOrder(meniu[order]);
                     int price = meniu[order]->getPrice();
                     masa->setNota(price, numarMasa);
                     clienti->setNotaIndividuala(price, id, numarMasa);
@@ -257,6 +262,7 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
 
             if (valid)
             {
+                handleOrder(meniu[order]);
                 int cantitate = meniu[order]->getCantitate();
                 if (cantitate == 0)
                 {
@@ -284,6 +290,7 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
         }
         case 5:
         {
+
             char desert[100];
             cout << "Introduceti desertul dorit: " << endl;
             cin.get();
@@ -301,6 +308,7 @@ void Comanda(Meniu *meniu[], Mese *masa, Clienti *clienti)
 
             if (valid)
             {
+                handleOrder(meniu[order]);
                 int cantitate = meniu[order]->getCantitate();
                 if (cantitate == 0)
                 {
@@ -367,7 +375,7 @@ bool Interactions(Meniu *meniu[], Mese *masa, Clienti *clienti)
         for (int i = 0; i < 18; i++)
         {
             meniu[i]->printMeniu();
-            if (i == 2 || i == 6 || i == 9 || i == 15)
+            if (i == 2 or i == 6 or i == 9 or i == 15)
                 cout << endl;
         }
         cout << endl;

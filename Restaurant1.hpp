@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <typeinfo>
 using namespace std;
 
 class Meniu
@@ -761,12 +762,12 @@ public:
         Mese *p = start;
         while (p != nullptr)
         {
-            if (masa != -1 && p->NumarLocuri >= nrclienti && p->Ocupata == false && nrlocuri > p->NumarLocuri)
+            if (masa != -1 and p->NumarLocuri >= nrclienti and p->Ocupata == false and nrlocuri > p->NumarLocuri)
             {
                 masa = p->NumarMasa;
                 nrlocuri = p->NumarLocuri;
             }
-            else if (masa == -1 && p->NumarLocuri >= nrclienti && p->Ocupata == false)
+            else if (masa == -1 and p->NumarLocuri >= nrclienti and p->Ocupata == false)
             {
                 masa = p->NumarMasa;
                 nrlocuri = p->NumarLocuri;
@@ -858,7 +859,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->NumarMasa == NumarMasa && p->IdClient == IdClient)
+            if (p->NumarMasa == NumarMasa and p->IdClient == IdClient)
             {
                 p->NotaIndividuala += nota;
                 break;
@@ -875,7 +876,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id && p->NumarMasa == masa)
+            if (p->IdClient == id and p->NumarMasa == masa)
             {
                 int nota = p->NotaIndividuala;
                 return nota;
@@ -920,7 +921,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id && p->NumarMasa == masa)
+            if (p->IdClient == id and p->NumarMasa == masa)
             {
                 p->NotaIndividuala = 0;
             }
@@ -932,7 +933,7 @@ public:
         Clienti *p = start;
         while (p != nullptr)
         {
-            if (p->IdClient == id && p->NumarMasa == masa)
+            if (p->IdClient == id and p->NumarMasa == masa)
             {
                 return;
             }
@@ -948,29 +949,102 @@ public:
     }
 };
 
-Meniu *LoadMenu()
-
+void handleOrder(Meniu *item)
 {
-    CiorbaDeBurta ciorbaDeBurta;
-    CiorbaDeLegume ciorbaDeLegume;
-    CiorbaDeCiuperci ciorbaDeCiuperci;
-    VitaFile vitaFile;
-    VitaStroganoff vitaStroganoff;
-    TocanaDePui tocanaDePui;
-    FrigaruiDePui frigaruiDePui;
-    CartofiPrajiti cartofiPrajiti;
-    PiureDeCartofi piureDeCartofi;
-    Orez orez;
-    VinCB2004 vinCB2004;
-    VinB1996 vinB1996;
-    VinAlb vinAlb;
-    VinRosu vinRosu;
-    ApaMinerala apaMinerala;
-    ApaPlata apaPlata;
-    Inghetata inghetata;
-    TortKranz tortKranz;
-
-    Meniu *meniu[18] = {&ciorbaDeBurta, &ciorbaDeLegume, &ciorbaDeCiuperci, &vitaFile, &vitaStroganoff, &tocanaDePui, &frigaruiDePui, &cartofiPrajiti, &piureDeCartofi, &orez, &vinCB2004, &vinB1996, &vinAlb, &vinRosu, &apaMinerala, &apaPlata, &inghetata, &tortKranz};
-
-    return *meniu;
+    cout << endl;
+    if (auto *ciorba = dynamic_cast<CiorbaDeBurta *>(item))
+    {
+        cout << "Procesam comanda pentru Ciorba de Burta\n";
+        ciorba->printMeniu();
+    }
+    else if (auto *ciorba = dynamic_cast<CiorbaDeLegume *>(item))
+    {
+        cout << "Procesam comanda pentru Ciorba de Legume\n";
+        ciorba->printMeniu();
+    }
+    else if (auto *ciorba = dynamic_cast<CiorbaDeCiuperci *>(item))
+    {
+        cout << "Procesam comanda pentru Ciorba de Ciuperci\n";
+        ciorba->printMeniu();
+    }
+    else if (auto *vita = dynamic_cast<VitaFile *>(item))
+    {
+        cout << "Procesam comanda pentru Vita File\n";
+        vita->printMeniu();
+    }
+    else if (auto *vita = dynamic_cast<VitaStroganoff *>(item))
+    {
+        cout << "Procesam comanda pentru Vita Stroganoff\n";
+        vita->printMeniu();
+    }
+    else if (auto *pui = dynamic_cast<TocanaDePui *>(item))
+    {
+        cout << "Procesam comanda pentru Tocana de Pui\n";
+        pui->printMeniu();
+    }
+    else if (auto *pui = dynamic_cast<FrigaruiDePui *>(item))
+    {
+        cout << "Procesam comanda pentru Frigarui de Pui\n";
+        pui->printMeniu();
+    }
+    else if (auto *garnitura = dynamic_cast<CartofiPrajiti *>(item))
+    {
+        cout << "Procesam comanda pentru Cartofi Prajiti\n";
+        garnitura->printMeniu();
+    }
+    else if (auto *garnitura = dynamic_cast<PiureDeCartofi *>(item))
+    {
+        cout << "Procesam comanda pentru Piure de Cartofi\n";
+        garnitura->printMeniu();
+    }
+    else if (auto *garnitura = dynamic_cast<Orez *>(item))
+    {
+        cout << "Procesam comanda pentru Orez\n";
+        garnitura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<VinCB2004 *>(item))
+    {
+        cout << "Procesam comanda pentru Vin CB 2004\n";
+        bautura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<VinB1996 *>(item))
+    {
+        cout << "Procesam comanda pentru Vin B 1996\n";
+        bautura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<VinAlb *>(item))
+    {
+        cout << "Procesam comanda pentru Vin Alb\n";
+        bautura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<VinRosu *>(item))
+    {
+        cout << "Procesam comanda pentru Vin Rosu\n";
+        bautura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<ApaMinerala *>(item))
+    {
+        cout << "Procesam comanda pentru Apa Minerala\n";
+        bautura->printMeniu();
+    }
+    else if (auto *bautura = dynamic_cast<ApaPlata *>(item))
+    {
+        cout << "Procesam comanda pentru Apa Plata\n";
+        bautura->printMeniu();
+    }
+    else if (auto *desert = dynamic_cast<Inghetata *>(item))
+    {
+        cout << "Procesam comanda pentru Inghetata\n";
+        desert->printMeniu();
+    }
+    else if (auto *desert = dynamic_cast<TortKranz *>(item))
+    {
+        cout << "Procesam comanda pentru Tort Kranz\n";
+        desert->printMeniu();
+    }
+    else
+    {
+        cout << "Unknown menu item\n";
+    }
+    cout << endl;
 }
